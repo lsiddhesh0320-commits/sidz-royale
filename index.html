@@ -3,33 +3,62 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-  <title>SIDz ROYALE</title>
+  <title>SIDz ROYALE | Online Prototype</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="loading">LOADING SIDz ROYALE…</div>
-  <div id="menu" class="panel">
-    <div class="logo">SIDz <span>ROYALE</span></div>
-    <p>3D Battle Royale Prototype</p>
-    <button id="playBtn">PLAY</button>
-    <small>WASD / Arrow keys • Mouse to look • Space to jump<br>Mobile: left pad to move • drag right side to look</small>
+  <div id="lobby" class="screen">
+    <div class="brand">SIDz <span>ROYALE</span></div>
+    <p class="subtitle">ONLINE MULTIPLAYER PROTOTYPE</p>
+    <section class="panel">
+      <label for="nickname">PLAYER NAME</label>
+      <input id="nickname" maxlength="16" placeholder="Enter nickname" value="Player">
+      <label for="avatar">AVATAR</label>
+      <select id="avatar">
+        <option value="blue">Blue Ranger</option><option value="red">Red Ranger</option>
+        <option value="green">Green Ranger</option><option value="gold">Gold Ranger</option>
+      </select>
+      <label for="mode">MODE</label>
+      <select id="mode"><option value="solo">Solo Room</option><option value="duo">Duo Room</option><option value="squad">Squad Room</option></select>
+      <div class="actions">
+        <button id="createRoom">CREATE ROOM</button>
+        <button id="joinRoom" class="secondary">JOIN ROOM</button>
+      </div>
+      <input id="roomCode" maxlength="8" placeholder="Room code to join">
+      <p id="status" role="status">Connect the multiplayer server to begin.</p>
+    </section>
+    <section class="panel compact">
+      <h3>PLAYER LIST</h3>
+      <ul id="playerList"><li>Not connected</li></ul>
+      <p class="hint">Share your room code with friends to join the same room.</p>
+    </section>
+    <button id="settingsOpen" class="settings-open">SETTINGS ⚙</button>
   </div>
-  <div id="hud" class="hidden">
-    <div class="topbar"><span id="alive">ALIVE 11</span><span id="zone">ZONE 100%</span><span id="kills">KILLS 0</span></div>
-    <div id="crosshair">+</div>
-    <div id="message">Find the safe zone!</div>
-    <div id="joystick"><div id="stick"></div></div>
-    <div class="actions">
-      <button id="jumpBtn">JUMP</button>
-      <button id="sprintBtn">RUN</button>
-      <button id="fireBtn">FIRE</button>
+
+  <div id="settings" class="screen hidden">
+    <div class="brand small">GAME <span>SETTINGS</span></div>
+    <section class="panel">
+      <label for="quality">GRAPHICS QUALITY</label>
+      <select id="quality"><option>Low</option><option selected>Medium</option><option>High</option><option>Ultra</option></select>
+      <label for="sensitivity">LOOK SENSITIVITY: <span id="sensValue">50</span></label>
+      <input id="sensitivity" type="range" min="10" max="100" value="50">
+      <p class="hint">Settings are saved on this device.</p>
+      <button id="settingsClose">BACK TO LOBBY</button>
+    </section>
+  </div>
+
+  <div id="game" class="hidden">
+    <div class="game-top">
+      <span id="roomLabel">ROOM ----</span>
+      <span id="onlineCount">PLAYERS 0</span>
+      <button id="leaveRoom">LEAVE</button>
     </div>
+    <div id="crosshair">+</div>
+    <div id="joystick"><div id="stick"></div></div>
+    <div class="game-controls"><button id="jump">JUMP</button><button id="run">RUN</button></div>
+    <div id="toast">Move around to see other players.</div>
   </div>
-  <div id="end" class="panel hidden">
-    <div class="logo">MATCH <span>OVER</span></div>
-    <p id="endText">Good game!</p>
-    <button id="againBtn">PLAY AGAIN</button>
-  </div>
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
   <script type="module" src="game.js"></script>
 </body>
 </html>
