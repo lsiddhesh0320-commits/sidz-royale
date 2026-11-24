@@ -1,22 +1,35 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<title>SIDz ROYALE</title><meta name="theme-color" content="#0d110c"><link rel="manifest" href="manifest.json"><link rel="icon" href="icon-192.png"><link rel="stylesheet" href="style.css"></head><body>
-<canvas id="c"></canvas>
-<div id="hud" class="hide">
- <div id="top"><span id="alive">ALIVE 11</span><span id="kills">KILLS 0</span></div>
- <div id="cross"></div><div id="msg"></div><div id="vig"></div>
- <div id="bars"><div id="hpb"><i id="hp"></i></div><b id="ammo">PISTOL  15 / 60</b></div>
- <div id="joy"><i id="knob"></i></div>
- <button id="bF">FIRE</button><button id="bJ">JUMP</button><button id="bS">SPRINT</button><button id="bC">CROUCH</button><button id="bR">RELOAD</button><button id="bW">SWAP</button>
-</div>
-<div id="menu" class="scr"><h1>SIDz <em>ROYALE</em></h1><p>10 bots. One survivor. Stay inside the circle.</p>
-<button id="play">DEPLOY</button><button id="set">SETTINGS</button>
-<small>Mobile: left stick moves, drag right side to look.<br>PC: WASD, drag to look, F fire, Space jump, Shift sprint, C crouch, R reload, Q swap.</small></div>
-<div id="settings" class="scr hide"><h2>SETTINGS</h2>
-<label>Look sensitivity<input id="sens" type="range" min="0.4" max="2" step="0.1" value="1"></label>
-<button id="qual">GRAPHICS: LOW</button><button id="back">BACK</button></div>
-<div id="end" class="scr hide"><h1 id="et"></h1><p id="es"></p><button id="again">PLAY AGAIN</button><button id="tomenu">MENU</button></div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="game.js"></script>
-<script>if("serviceWorker"in navigator)navigator.serviceWorker.register("sw.js")</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>SIDz ROYALE</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="loading">LOADING SIDz ROYALE…</div>
+  <div id="menu" class="panel">
+    <div class="logo">SIDz <span>ROYALE</span></div>
+    <p>3D Battle Royale Prototype</p>
+    <button id="playBtn">PLAY</button>
+    <small>WASD / Arrow keys • Mouse to look • Space to jump<br>Mobile: left pad to move • drag right side to look</small>
+  </div>
+  <div id="hud" class="hidden">
+    <div class="topbar"><span id="alive">ALIVE 11</span><span id="zone">ZONE 100%</span><span id="kills">KILLS 0</span></div>
+    <div id="crosshair">+</div>
+    <div id="message">Find the safe zone!</div>
+    <div id="joystick"><div id="stick"></div></div>
+    <div class="actions">
+      <button id="jumpBtn">JUMP</button>
+      <button id="sprintBtn">RUN</button>
+      <button id="fireBtn">FIRE</button>
+    </div>
+  </div>
+  <div id="end" class="panel hidden">
+    <div class="logo">MATCH <span>OVER</span></div>
+    <p id="endText">Good game!</p>
+    <button id="againBtn">PLAY AGAIN</button>
+  </div>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
